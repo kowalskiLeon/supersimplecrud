@@ -6,6 +6,7 @@
 package com.example;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,15 @@ public class PessoaService {
         return repositorio.save(p);
     }
     
+    public Pessoa deletar(Pessoa p){
+        repositorio.delete(p);
+        return p;
+    }
+    
+    public Pessoa pegarPorId(Long id){
+        Optional<Pessoa> p = repositorio.findById(id);
+        return p.get();
+    }
     
     
 }
